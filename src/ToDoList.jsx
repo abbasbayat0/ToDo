@@ -1,3 +1,5 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable no-unreachable */
 import GetInput from './GetInput.jsx';
 import List from './List.jsx';
 import { useState } from 'react';
@@ -7,8 +9,6 @@ const ToDoList = () => {
     const [showList, changeShowList] = useState(false);
     const [toDoList, changeToDoList] = useState([]);
     const [newToDo, changeNewToDo] = useState('');
-    console.log(toDoList)
-
     return (
         <>
             {/* header and controls */}
@@ -29,7 +29,7 @@ const ToDoList = () => {
 
             {/* main list */}
             <div className={`w-96 bg-slate-200 rounded-xl shadow-2xl absolute top-40 ${showList ? 'h-96' : 'h-0'} transtition duration-700 overflow-scroll`}>
-                <List toDoList={toDoList} changeToDoList={changeToDoList} />
+                {showList && <List toDoList={toDoList} changeToDoList={changeToDoList} />}
             </div>
 
             {/* add new button */}

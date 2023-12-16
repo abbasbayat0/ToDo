@@ -10,9 +10,11 @@ const GetInput = (props) => {
             }} onKeyUp={(e) => {
                 if(e.keyCode === 13){
                     const newToDo = {name: props.newToDo, id: props.toDoList.length ? props.toDoList[props.toDoList.length - 1].id + 1 : 1, isComplete: false}
-                    props.changeToDoList([...props.toDoList, newToDo]);
+                    const list = props.toDoList.length ? [...props.toDoList, newToDo] : [newToDo]
+                    props.changeToDoList(list);
                     e.target.value = '';
                     props.changeShowBlank(false)
+
                 }
             }} />
         </div>
