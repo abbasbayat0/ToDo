@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import inputReducer from "@/lib/redux/feature/toDo/inputSlice"
+import inputReducer from "./feature/toDo/inputSlice"
 import showList from "./feature/toDo/showList";
 
 export const store = configureStore({
@@ -8,6 +8,3 @@ export const store = configureStore({
     list: showList
   },
 });
-
-export type RootState = ReturnType<typeof store.getState>;
-// export type AppDispatch = typeof store.dispatch;

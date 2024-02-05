@@ -1,7 +1,7 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState: { value: boolean } = { value: false };
+const initialState = { value: false };
 
 export const list = createSlice({
   name: "list",

@@ -1,23 +1,20 @@
 "use client";
 
-import { RootState } from "@/lib/redux/store";
 import { useState } from "react";
-import { UseSelector, useSelector } from "react-redux";
-
-type ToDo = { value: string; id: number; isComplete: boolean };
+import { useSelector } from "react-redux";
 
 const List = () => {
   const [refresh, changeRefresh] = useState(false);
 
   //get todos from local storage
-  const saved = [JSON.parse(localStorage.getItem("toDoList"))];
+  const saved = [JSON.parse(localStorage.getItem("toDoList") || "")];
 
   // click on complete
-  const handleComplete = (id: number) => {
+  const handleComplete = (id) => {
     // get items from local storage map on them and change is complete property and save new list on a variable
-    const newToDoList = [JSON.parse(localStorage.getItem("toDoList"))][0].map(
-      (toDo: ToDo) => {
-        if (toDo.id == id) return { ...toDo, isComplete: !toDo.isComplete };
+    const newToDoList = [JSON.parse(localStorage.getItem("toDoList") || "")][0].map(
+      (toDo) => {
+        if (toDo.id === id) return { ...toDo, isComplete: !toDo.isComplete };
         else return toDo;
       }
     );
@@ -28,14 +25,14 @@ const List = () => {
   };
 
   // click on delete
-  const handleDelete = (id: number) => {
-    const newToDoList: ToDo[] = [
-      JSON.parse(localStorage.getItem("toDoList")),
-    ][0].filter((toDo: ToDo) => toDo.id != id);
+  const handleDelete = (id) => {
+    const newToDoList = [
+      JSON.parse(localStorage.getItem("toDoList") || ""),
+    ][0].filter((toDo) => toDo.id !== id);
 
     // set the new list to the local storage
     localStorage.setItem("toDoList", JSON.stringify(newToDoList));
-    localStorage.getItem("toDoList").length == 2 &&
+    localStorage.getItem("toDoList").length === 2 &&
       localStorage.setItem(
         "toDoList",
         JSON.stringify([
@@ -49,7 +46,7 @@ const List = () => {
     changeRefresh(!refresh);
   };
 
-  const showList = useSelector((state: RootState) => state.list.value);
+  const showList = useSelector((state) => state.list.value);
 
   return (
     <main
@@ -57,9 +54,9 @@ const List = () => {
         showList ? "h-4/5 opacity-100" : "h-0 opacity-0"
       }`}
     >
-      {saved[0].map((toDo: ToDo, index: number) => {
+      {saved[0].map((toDo, index) => {
         // show the title without complete or delete icon
-        if (toDo.id == 1) {
+        if (toDo.id === 1) {
           return (
             <div
               className={`flex justify-center mt-10 w-full py-2 px-5 rounded-lg ${

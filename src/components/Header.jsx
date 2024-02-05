@@ -1,6 +1,6 @@
 "use client";
 
-import { showList } from "@/lib/redux/feature/toDo/showList";
+import { showList } from "../lib/redux/feature/toDo/showList";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
@@ -8,7 +8,8 @@ const Header = () => {
   const dispatch = useDispatch();
   const [count, changeCount] = useState(0);
   setInterval(
-    () => changeCount(JSON.parse(localStorage.getItem("toDoList")).length),
+    () =>
+      changeCount(JSON.parse(localStorage.getItem("toDoList") || "").length),
     1000
   );
   return (

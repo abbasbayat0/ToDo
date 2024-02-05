@@ -1,18 +1,17 @@
 "use client";
 
-import { changeStatus } from "@/lib/redux/feature/toDo/inputSlice";
-import { RootState } from "@/lib/redux/store";
+import { changeStatus } from "../lib/redux/feature/toDo/inputSlice";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import List from "./List";
 
 const GetInput = () => {
   const [newToDo, changeNewToDo] = useState([]);
-  const inputStatus = useSelector((state: RootState) => state.input.value);
+  const inputStatus = useSelector((state) => state.input.value);
   const dispatch = useDispatch();
 
   // get items in localStorage
-  const saved = JSON.parse(localStorage.getItem("toDoList"));
+  const saved = JSON.parse(localStorage.getItem("toDoList") || "");
   // get last ID
   const lastID = saved.length > 1 ? saved[saved.length - 1].id : saved[0].id;
 
@@ -40,10 +39,10 @@ const GetInput = () => {
           }}
           onKeyDown={(e) => {
             // submit with enter
-            if (e.keyCode == 13) {
+            if (e.keyCode === 13) {
               if (e.target.value) {
                 // owerride at the first time
-                if (lastID == 1) {
+                if (lastID === 1) {
                   localStorage.setItem("toDoList", JSON.stringify([newToDo]));
                 } else {
                   const newToDoList = [...saved, newToDo];

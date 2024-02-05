@@ -1,12 +1,11 @@
 "use client";
 
-import { changeStatus } from "@/lib/redux/feature/toDo/inputSlice";
-import { RootState } from "@/lib/redux/store";
+import { changeStatus } from "../lib/redux/feature/toDo/inputSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 const NewOne = () => {
   const dispatch = useDispatch();
-  const show = useSelector((state: RootState) => state.list.value);
+  const show = useSelector((state) => state.list.value);
 
   if (!localStorage.getItem("toDoList"))
     localStorage.setItem(
