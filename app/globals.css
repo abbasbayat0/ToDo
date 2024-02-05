@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-.overflow-scroll::-webkit-scrollbar {
-    display: none;
+main::-webkit-scrollbar {
+  display: none;
 }
