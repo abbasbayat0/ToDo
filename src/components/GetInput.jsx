@@ -27,7 +27,7 @@ const GetInput = () => {
         <input
           type="text"
           maxLength={20}
-          className="animate-width h-16 rounded-xl text-center text-xl"
+          className="animate-width h-16 border-none outline-none shadow-gray-500 shadow-inner rounded-xl text-center text-xl"
           placeholder="Write & Enter"
           // save changes to the state
           onChange={(e) => {

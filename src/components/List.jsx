@@ -12,12 +12,12 @@ const List = () => {
   // click on complete
   const handleComplete = (id) => {
     // get items from local storage map on them and change is complete property and save new list on a variable
-    const newToDoList = [JSON.parse(localStorage.getItem("toDoList") || "")][0].map(
-      (toDo) => {
-        if (toDo.id === id) return { ...toDo, isComplete: !toDo.isComplete };
-        else return toDo;
-      }
-    );
+    const newToDoList = [
+      JSON.parse(localStorage.getItem("toDoList") || ""),
+    ][0].map((toDo) => {
+      if (toDo.id === id) return { ...toDo, isComplete: !toDo.isComplete };
+      else return toDo;
+    });
     // set the new list to the local storage
     localStorage.setItem("toDoList", JSON.stringify(newToDoList));
     // re-render the component :)
@@ -66,7 +66,7 @@ const List = () => {
             >
               <p
                 className={`${
-                  toDo.isComplete ? "line-through text-gray-600" : ""
+                  toDo.isComplete ? "line-through text-gray-200" : ""
                 } transition-all duration-700 select-none`}
               >
                 {toDo.value}
@@ -76,7 +76,7 @@ const List = () => {
         } else {
           return (
             <div
-              className={`flex justify-between mt-10 w-full py-2 px-5 rounded-lg ${
+              className={`flex justify-between text-gray-200 mt-10 w-full py-2 px-5 rounded-lg ${
                 toDo.isComplete ? "bg-gray-400" : "bg-gray-500"
               } transition-all duration-700`}
               key={index}

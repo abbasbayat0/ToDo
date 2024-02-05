@@ -19,7 +19,7 @@ const NewOne = () => {
     );
   return (
     <button
-      className={`h-14 bg-green-500 rounded-xl absolute -bottom-7 z-10 shadow-xl shadow-gray-700 transition-all duration-1000 text-nowrap overflow-hidden ${
+      className={`h-14 bg-green-500 text-xl select-none hover:text-gray-200 rounded-xl absolute -bottom-7 z-10 shadow-xl shadow-gray-700 transition-all duration-1000 text-nowrap overflow-hidden ${
         show ? "w-1/2 opacity-100" : "w-0 opacity-0"
       }`}
       onClick={() => {

@@ -15,12 +15,13 @@ const Header = () => {
   return (
     <header className="bg-green-500 h-20 w-full rounded-3xl flex items-center justify-between p-10 shadow-2xl shadow-gray-500">
       <i
-        className={`fa-solid fa-bars cursor-pointer`}
+        className={`fa-solid fa-bars cursor-pointer text-2xl hover:text-gray-200 transition-all`}
         onClick={() => dispatch(showList())}
       ></i>
-      <h1>To Do</h1>
+      <h1 className="text-2xl font-medium select-none">To Do</h1>
       <i
-        className={`fa-solid fa-arrow-down cursor-pointer transition-all duration-500 animate-bounce ${
+        title="scroll to view more"
+        className={`fa-solid fa-arrow-down transition-all duration-500 animate-bounce ${
           count >= 5 ? "opacity-80" : "opacity-0"
         }`}
       ></i>
